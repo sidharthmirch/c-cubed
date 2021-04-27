@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+      "crypto-price": "^0.0.6",
+      "discord.js": "^12.5.3"
+    }
+  }
+  
