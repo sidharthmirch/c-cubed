@@ -4,7 +4,8 @@ const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log(`${client.user.tag} is now online!`);
-  client.user.setActivity('markets | $help', {type : 'WATCHING'}).catch(console.error)
+  client.user.setActivity(`markets | $help`, {type : 'WATCHING'}).catch(console.error)
+  console.log(client.guilds.cache.size);
 });
 
 client.on("message", (message) => {
@@ -23,7 +24,14 @@ client.on("message", (message) => {
     message.channel.send(
       "`$price [CRYPTO] [CURRENCY]` This will provide the price of a given crypto in the provided currency.\
     \n```Example usage: $price BTC USD --> This would give you the price of BTC in USD.``` \
-    \n Legacy support for `$fbtc` at the moment - will be reworking the function into the new `$price` command."
+    \nLegacy support for `$fbtc` at the moment - will be reworking the function into the new `$price` command. \
+    \n`status` Server count + my discord for help."
+    );
+  } else if (command === "status") {
+    let count = client.guilds.cache.size; 
+    message.channel.send(`I am in ${count} servers! 
+    \nIf you want help or would like to report a bug, reach me on discord: \`sid#0003\`! `
+      
     );
   } else if (command === "price") {
     let price = require("crypto-price");
