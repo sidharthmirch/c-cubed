@@ -60,7 +60,7 @@ client.on("message", (message) => {
         message.channel.send(`1${cryptoSymbol} is worth ${baseSymbol}${currentPrice}`)
       })
       .catch((err) => {
-        message.channel.send('The arguements you supplied are causing me to fumble... Please try new values');
+        message.channel.send('The arguments you supplied are causing me to fumble... Please try new values');
       })
     
   }
