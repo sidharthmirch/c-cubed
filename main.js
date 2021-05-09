@@ -1,4 +1,4 @@
-// add info in embed
+// added info in embed
 const getSymbolFromCurrency = require('currency-symbol-map')
 const Discord = require("discord.js");
 const { prefix, token, apiKey } = require("./config.json");
@@ -24,8 +24,7 @@ client.on("message", (message) => {
   if (command === "help") {
     message.channel.send(
       "I now officially support (almost) all cryptocurrencies and **some** fiat currencies! \
-    \nPlease type `$commands` for commands that you can use.\
-    \nBot was down for 24 hours as I switched the API I was using to get prices."
+    \nPlease type `$commands` for commands that you can use."
     );
   } else if (command === "commands") {
     message.channel.send(
@@ -45,7 +44,11 @@ client.on("message", (message) => {
         const currentPrice = prices[Object.keys(prices)[0]];
         const cryptoSymbol = (getSymbolFromCurrency(crypto.toUpperCase()) !== undefined) ? getSymbolFromCurrency(crypto.toUpperCase()) : crypto.toUpperCase(); 
         const baseSymbol = (getSymbolFromCurrency(base.toUpperCase()) !== undefined) ? getSymbolFromCurrency(base.toUpperCase()) : base.toUpperCase();
-        message.channel.send(`1${cryptoSymbol} is worth ${baseSymbol}${currentPrice}`)
+        const embed = new Discord.MessageEmbed()
+        .setTitle(`${crypto.toUpperCase()} to ${base.toUpperCase()}`)
+        .setColor(0xffd600)
+        .setDescription(`${crypto.toUpperCase()} symbol: **${cryptoSymbol}**\n${base.toUpperCase()} symbol: **${baseSymbol}**\n\n1 ${cryptoSymbol} is worth ${currentPrice} ${baseSymbol}`)
+        message.channel.send(embed)
       })
       .catch((err) => {
         message.channel.send('The arguments you supplied are causing me to fumble... Please try new values');
