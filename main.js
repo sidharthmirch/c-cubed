@@ -1,12 +1,4 @@
-// https://www.npmjs.com/package/cryptocompare
-// fml
-
-
-// want to make a nice format and shit
 // add info in embed
-// use a file with png of coin symbol 
-// use file to pull $ sign etc
-
 const getSymbolFromCurrency = require('currency-symbol-map')
 const Discord = require("discord.js");
 const { prefix, token, apiKey } = require("./config.json");
@@ -32,7 +24,8 @@ client.on("message", (message) => {
   if (command === "help") {
     message.channel.send(
       "I now officially support (almost) all cryptocurrencies and **some** fiat currencies! \
-    \nPlease type `$commands` for commands that you can use."
+    \nPlease type `$commands` for commands that you can use.\
+    \nBot was down for 24 hours as I switched the API I was using to get prices."
     );
   } else if (command === "commands") {
     message.channel.send(
@@ -50,11 +43,6 @@ client.on("message", (message) => {
       cc.price(crypto, base)
       .then(prices => {
         const currentPrice = prices[Object.keys(prices)[0]];
-        // if (crypto.toUpperCase() in getSymbolFromCurrency && base.toUpperCase() in getSymbolFromCurrency) {
-        //     message.channel.send(`${getSymbolFromCurrency(crypto.toUpperCase())}1 is worth ${getSymbolFromCurrency(base.toUpperCase())}${currentPrice}`)   
-        // } else {
-        //     message.channel.send(`1 ${crypto.toUpperCase()} is worth ${currentPrice} ${base.toUpperCase()}`)
-        // }
         const cryptoSymbol = (getSymbolFromCurrency(crypto.toUpperCase()) !== undefined) ? getSymbolFromCurrency(crypto.toUpperCase()) : crypto.toUpperCase(); 
         const baseSymbol = (getSymbolFromCurrency(base.toUpperCase()) !== undefined) ? getSymbolFromCurrency(base.toUpperCase()) : base.toUpperCase();
         message.channel.send(`1${cryptoSymbol} is worth ${baseSymbol}${currentPrice}`)
