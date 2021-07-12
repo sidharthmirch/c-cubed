@@ -1,17 +1,17 @@
-// added info in embed
-const getSymbolFromCurrency = require('currency-symbol-map')
 const Discord = require("discord.js");
 const { prefix, token, apiKey } = require("./config.json");
+const cc = require("cryptocompare");
+const getSymbolFromCurrency = require("currency-sympol-map");
+const color = 0xffd600;
+global.fetch = require("node-fetch");
+
 const client = new Discord.Client();
-global.fetch = require('node-fetch');
-const cc = require('cryptocompare');
 cc.setApiKey(apiKey);
-let value;
 
 client.on("ready", () => {
-  console.log(`${client.user.tag} is now online!`);
-  client.user.setActivity(`markets | $help`, {type : 'WATCHING'}).catch(console.error)
-  console.log(client.guilds.cache.size);
+    console.log(`${client.user.tag} online`);
+    client.user.setActivity(`markets | $help`, {type : 'WATCHING'}).catch(console.error)
+    console.log(client.guilds.cache.size);
 });
 
 client.on("message", (message) => {
@@ -46,14 +46,13 @@ client.on("message", (message) => {
         const baseSymbol = (getSymbolFromCurrency(base.toUpperCase()) !== undefined) ? getSymbolFromCurrency(base.toUpperCase()) : base.toUpperCase();
         const embed = new Discord.MessageEmbed()
         .setTitle(`${crypto.toUpperCase()} to ${base.toUpperCase()}`)
-        .setColor(0xffd600)
+        .setColor(color)
         .setDescription(`${crypto.toUpperCase()} symbol: **${cryptoSymbol}**\n${base.toUpperCase()} symbol: **${baseSymbol}**\n\n1 ${cryptoSymbol} is worth ${currentPrice} ${baseSymbol}`)
         message.channel.send(embed)
       })
       .catch((err) => {
         message.channel.send('The arguments you supplied are causing me to fumble... Please try new values');
-      })
-    
+      })   
   }
 });
 
