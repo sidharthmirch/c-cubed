@@ -1,1 +1,1 @@
-Worker: node index.js
+Worker: node --experimental-modules index.js
