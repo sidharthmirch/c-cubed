@@ -11,9 +11,11 @@ const client = new Discord.Client();
 client.on("ready", () => {
   serverCount = client.guilds.cache.size;
   console.log(`${client.user.tag} online and serving ${serverCount} servers.`);
+  let servers = [];
   client.guilds.cache.forEach((s) => {
-    console.log(s.name);
+    servers.push(s.name);
   });
+  console.log(`Server list: `, servers);
   client.user
     .setActivity(`${serverCount} markets | $help`, { type: "WATCHING" })
     .catch(console.error);
