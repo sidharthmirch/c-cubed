@@ -14,7 +14,7 @@ client.on("ready", () => {
     `${client.user.tag} online and serving ${serverCount} servers.`
   );
   client.user
-    .setActivity(`markets | $help`, { type: "WATCHING" })
+    .setActivity(`${serverCount} markets | $help`, { type: "WATCHING" })
     .catch(console.error);
 });
 
