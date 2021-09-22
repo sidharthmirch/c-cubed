@@ -1,6 +1,11 @@
-const Discord = require("discord.js");
+import { commands } from "./commands.js";
+import dotenv from "dotenv";
+import * as Discord from "discord.js";
 
-const prefix = "$";
+dotenv.config()
+const DISCORD_KEY = process.env.DISCORD_KEY;
+const prefix = "!";
+
 const client = new Discord.Client();
 client.on("ready", () => {
   console.log(
@@ -14,9 +19,11 @@ client.on("ready", () => {
 client.on("message", (message) => {
   if (message.content.startsWith(prefix) && !message.author.bot) {
     try {
-      commands[request.split(" ")[0]](message);
+      console.log(message.content);
     } catch (error) {
       console.error(error);
     }
   }
 });
+
+client.login(DISCORD_KEY);

@@ -1,9 +1,9 @@
-import getPrice from "utils/getPrice";
-import support from "utils/support";
+import { getPrice } from "./utils/getPrice.js";
+import { helpRes , commandsRes, status } from "./utils/support.js";
 
 export const commands = {
-  "price": getPrice,
-  "help": support.help,
-  "commands": support.commands,
-  "status": support.status,
+  "price": () => {console.log("price hit")},
+  "help": helpRes,
+  "commands": commandsRes,
+  "status": status,
 };
