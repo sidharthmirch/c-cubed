@@ -1,17 +1,17 @@
 import getSymbolFromCurrency from "currency-symbol-map";
 
-export const getSymbols = (crypto, base) => {
-  const cryptoSymbol =
-    getSymbolFromCurrency(crypto.toUpperCase()) !== undefined
-      ? getSymbolFromCurrency(crypto.toUpperCase())
-      : crypto.toUpperCase();
-  const baseSymbol =
-    getSymbolFromCurrency(base.toUpperCase()) !== undefined
-      ? getSymbolFromCurrency(base.toUpperCase())
-      : base.toUpperCase();
+export const getSymbols = (currencyA, currencyB) => {
+  const symbolA =
+    getSymbolFromCurrency(currencyA.toUpperCase()) !== undefined
+      ? getSymbolFromCurrency(currencyA.toUpperCase())
+      : currencyA.toUpperCase();
+  const symbolB =
+    getSymbolFromCurrency(currencyB.toUpperCase()) !== undefined
+      ? getSymbolFromCurrency(currencyB.toUpperCase())
+      : currencyB.toUpperCase();
 
   return {
-    cryptoSymbol: cryptoSymbol,
-    baseSymbol: baseSymbol,
+    symbolA: symbolA,
+    symbolB: symbolB,
   };
 };
