@@ -2,17 +2,18 @@ import { commands } from "./commands.js";
 import dotenv from "dotenv";
 import * as Discord from "discord.js";
 
-dotenv.config()
+dotenv.config();
 const DISCORD_KEY = process.env.DISCORD_KEY;
 const prefix = "$";
-let serverCount; 
+let serverCount;
 
 const client = new Discord.Client();
 client.on("ready", () => {
   serverCount = client.guilds.cache.size;
-  console.log(
-    `${client.user.tag} online and serving ${serverCount} servers.`
-  );
+  console.log(`${client.user.tag} online and serving ${serverCount} servers.`);
+  client.guilds.cache.forEach((s) => {
+    console.log(s.name);
+  });
   client.user
     .setActivity(`${serverCount} markets | $help`, { type: "WATCHING" })
     .catch(console.error);
