@@ -81,6 +81,12 @@ const serverListRes = async (message) => {
       .setColor(COLOR)
       .setDescription(`\`\`\`${servers}\`\`\``); // TODO: Handle string formatting
     message.channel.send(res);
+  } else {
+    const res = new MessageEmbed()
+      .setTitle("Oh no!")
+      .setColor(COLOR)
+      .setDescription("It looks like you aren't my owner!");
+    message.channel.send(res);
   }
 };
 
