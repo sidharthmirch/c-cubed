@@ -5,20 +5,26 @@ import * as Discord from "discord.js";
 dotenv.config();
 const DISCORD_KEY = process.env.DISCORD_KEY;
 const prefix = "$";
-let serverCount;
 
 const client = new Discord.Client();
 client.on("ready", () => {
-  serverCount = client.guilds.cache.size;
-  console.log(`${client.user.tag} online and serving ${serverCount} servers.`);
-  let servers = [];
-  client.guilds.cache.forEach((s) => {
-    servers.push(s.name);
-  });
-  console.log(`Server list: `, servers);
-  client.user
-    .setActivity(`${serverCount} markets | $help`, { type: "WATCHING" })
-    .catch(console.error);
+  setInterval(() => {
+    let serverCount = client.guilds.cache.size;
+    let servers = [];
+
+    client.guilds.cache.forEach((s) => {
+      servers.push(s.name);
+    });
+
+    client.user.setActivity(`${serverCount} markets | ${prefix}help`, {
+      type: "WATCHING",
+    });
+
+    console.log(
+      `${client.user.tag} online and serving ${serverCount} servers.`
+    );
+    console.log(`Server list: `, servers);
+  }, 60000);
 });
 
 client.on("message", (message) => {

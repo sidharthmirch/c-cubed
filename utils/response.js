@@ -18,7 +18,7 @@ const helpRes = (message) => {
 
 const commandsRes = (message) => {
   const res = new Discord.MessageEmbed()
-    .setTitle()
+    .setTitle(`Commands`)
     .setColor(COLOR)
     .setDescription(
       "`$price [CRYPTO] [CURRENCY]` This will provide the price of a given crypto in the provided currency.\
