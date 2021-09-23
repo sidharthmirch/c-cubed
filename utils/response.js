@@ -1,13 +1,15 @@
 import { MessageEmbed } from "discord.js";
 import { getPrice } from "./getPrice.js";
 import { getSymbols } from "./getSymbols.js";
+import { client } from "../index.js";
 import dotenv from "dotenv";
 dotenv.config();
 const COLOR = process.env.COLOR || 0xffd600;
+const OWNER_ID = process.env.OWNER_ID;
 
 const helpRes = (message) => {
   const res = new MessageEmbed()
-    .setTitle('')
+    .setTitle("")
     .setColor(COLOR)
     .setDescription(
       `I now officially support (almost) all cryptocurrencies and **some** fiat currencies! \
@@ -55,7 +57,7 @@ const priceRes = async (message) => {
       );
     message.channel.send(res);
   } catch (err) {
-    console.log(err)
+    console.log(err);
     const res = new MessageEmbed()
       .setTitle("Oh no!")
       .setColor(COLOR)
@@ -66,4 +68,20 @@ const priceRes = async (message) => {
   }
 };
 
-export { helpRes, commandsRes, githubRes, priceRes };
+const serverListRes = async (message) => {
+  // Can only be invoked by bot owner
+  if (message.author.id === OWNER_ID) {
+    let serverCount = client.guilds.cache.size;
+    let servers = [];
+    client.guilds.cache.forEach((s) => {
+      servers.push(s.name);
+    });
+    const res = new MessageEmbed()
+      .setTitle(`Currently in ${serverCount} servers`)
+      .setColor(COLOR)
+      .setDescription(`\`\`\`${servers}\`\`\``); // TODO: Handle string formatting
+    message.channel.send(res);
+  }
+};
+
+export { helpRes, commandsRes, githubRes, priceRes, serverListRes };

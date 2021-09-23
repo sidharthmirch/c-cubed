@@ -6,18 +6,11 @@ dotenv.config();
 const DISCORD_KEY = process.env.DISCORD_KEY;
 const prefix = "$";
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+export const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 client.on("ready", () => {
   // Initialize status
   let serverCount = client.guilds.cache.size;
   console.log(`${client.user.tag} online and serving ${serverCount} servers.`);
-
-  // Only log server list on init
-  let servers = [];
-  client.guilds.cache.forEach((s) => {
-    servers.push(s.name);
-  });
-  console.log(`Server list: `, servers);
 
   client.user.setActivity(`${serverCount} markets | ${prefix}help`, {
     type: "WATCHING",
@@ -30,10 +23,6 @@ client.on("ready", () => {
     client.user.setActivity(`${serverCount} markets | ${prefix}help`, {
       type: "WATCHING",
     });
-
-    console.log(
-      `${client.user.tag} online and serving ${serverCount} servers.`
-    );
   }, 60000);
 });
 
