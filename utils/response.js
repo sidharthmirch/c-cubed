@@ -60,7 +60,7 @@ const priceRes = async (message) => {
       .setTitle("Oh no!")
       .setColor(COLOR)
       .setDescription(
-        "Please double check the arguments you passed!\nIf you believe that you have found a bug please open a new issue on GitHub.\nUse `$status` for more information."
+        "Please double check the arguments you passed!\nIf you believe that you have found a bug please open a new issue on GitHub.\nUse `$github` for more information."
       );
     message.channel.send(res);
   }
