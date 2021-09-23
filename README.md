@@ -28,6 +28,6 @@ Run Locally
  import * as Discord from "discord.js"; 
  import { Client, Intents } from "discord.js";
  ```
- _This is works as the package.json has `{ "type": "module" }` and the scripts have the flag `--experimental-modules`_
+ _This works as the package.json has `{ "type": "module" }` and the scripts have the flag `--experimental-modules`_
  
 - To create an API Key, go to https://www.cryptocompare.com/cryptopian/api-keys and make sure you give it the "Read All Price Streaming and Polling Endpoints" permission.
