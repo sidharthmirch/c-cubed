@@ -1,6 +1,9 @@
-## C³
+## C³  
+[![Add me to your server!](https://badgen.net/badge/add%20me/to%20your%20server!/F2A900)](https://discord.com/api/oauth2/authorize?client_id=827663203298312203&permissions=0&scope=bot)
 
 A Discord bot for checking crypto to crypto/fiat prices.
+
+
 
 Dependencies
 -------
