@@ -1,6 +1,6 @@
 import { commands } from "./commands.js";
 import dotenv from "dotenv";
-import { Client, Intents }from "discord.js";
+import { Client, Intents } from "discord.js";
 
 dotenv.config();
 const DISCORD_KEY = process.env.DISCORD_KEY;
@@ -12,18 +12,20 @@ client.on("ready", () => {
   let serverCount = client.guilds.cache.size;
   console.log(`${client.user.tag} online and serving ${serverCount} servers.`);
 
+  // Only log server list on init
+  let servers = [];
+  client.guilds.cache.forEach((s) => {
+    servers.push(s.name);
+  });
+  console.log(`Server list: `, servers);
+
   client.user.setActivity(`${serverCount} markets | ${prefix}help`, {
     type: "WATCHING",
   });
 
-  // dynamic update of status
+  // Dynamic update of status
   setInterval(() => {
     serverCount = client.guilds.cache.size;
-    let servers = [];
-
-    client.guilds.cache.forEach((s) => {
-      servers.push(s.name);
-    });
 
     client.user.setActivity(`${serverCount} markets | ${prefix}help`, {
       type: "WATCHING",
@@ -32,7 +34,6 @@ client.on("ready", () => {
     console.log(
       `${client.user.tag} online and serving ${serverCount} servers.`
     );
-    console.log(`Server list: `, servers);
   }, 60000);
 });
 
