@@ -23,12 +23,12 @@ const commandsRes = (message) => {
     .setDescription(
       "`$price [CRYPTO] [CURRENCY]` This will provide the price of a given crypto in the provided currency.\
       \n```Example usage: $price BTC USD --> This would give you the price of BTC in USD.``` \
-      \n`$status` Provides server count + my discord for help."
+      \n`$github` Link to the github repo!."
     );
   message.channel.send(res);
 };
 
-const statusRes = (message) => {
+const githubRes = (message) => {
   const res = new Discord.MessageEmbed()
     .setTitle(
       `If you would like to help out, feel free to check out the GitHub repo!`
@@ -66,4 +66,4 @@ const priceRes = async (message) => {
   }
 };
 
-export { helpRes, commandsRes, statusRes, priceRes };
+export { helpRes, commandsRes, githubRes, priceRes };
