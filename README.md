@@ -12,7 +12,7 @@ Dependencies
 - [currency-symbol-map](https://www.npmjs.com/package/currency-symbol-map) to provide currency symbols.
 - [discord.js](https://discord.js.org/#/) JavaScript discord API.
 - [node-fetch](https://github.com/node-fetch/node-fetch) to allow for API calls to be made.
-- [NodeJS](https://nodejs.org/en/) version 13.0.0++ (to enable [ECMA script module imports](#ecma-module-import)).
+- [NodeJS](https://nodejs.org/en/) version 16.0.0+ (to enable [ECMA script module imports](#ecma-module-import) \[changed to v16 as discord.js v13 now requires nodejs v16+]).
 
 Run Locally
 -------
