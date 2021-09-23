@@ -1,4 +1,4 @@
-import * as Discord from "discord.js";
+import { MessageEmbed } from "discord.js";
 import { getPrice } from "./getPrice.js";
 import { getSymbols } from "./getSymbols.js";
 import dotenv from "dotenv";
@@ -6,7 +6,7 @@ dotenv.config();
 const COLOR = process.env.COLOR || 0xffd600;
 
 const helpRes = (message) => {
-  const res = new Discord.MessageEmbed()
+  const res = new MessageEmbed()
     .setTitle('')
     .setColor(COLOR)
     .setDescription(
@@ -17,7 +17,7 @@ const helpRes = (message) => {
 };
 
 const commandsRes = (message) => {
-  const res = new Discord.MessageEmbed()
+  const res = new MessageEmbed()
     .setTitle(`Commands`)
     .setColor(COLOR)
     .setDescription(
@@ -29,7 +29,7 @@ const commandsRes = (message) => {
 };
 
 const githubRes = (message) => {
-  const res = new Discord.MessageEmbed()
+  const res = new MessageEmbed()
     .setTitle(
       `If you would like to help out, feel free to check out the GitHub repo!`
     )
@@ -47,7 +47,7 @@ const priceRes = async (message) => {
       currencyB.toUpperCase()
     );
     const currentPrice = await getPrice(currencyA, currencyB);
-    const res = new Discord.MessageEmbed()
+    const res = new MessageEmbed()
       .setTitle(`${currencyA.toUpperCase()} to ${currencyB.toUpperCase()}`)
       .setColor(COLOR)
       .setDescription(
@@ -56,7 +56,7 @@ const priceRes = async (message) => {
     message.channel.send(res);
   } catch (err) {
     console.log(err)
-    const res = new Discord.MessageEmbed()
+    const res = new MessageEmbed()
       .setTitle("Oh no!")
       .setColor(COLOR)
       .setDescription(

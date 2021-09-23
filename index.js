@@ -1,12 +1,12 @@
 import { commands } from "./commands.js";
 import dotenv from "dotenv";
-import * as Discord from "discord.js";
+import { Client, Intents }from "discord.js";
 
 dotenv.config();
 const DISCORD_KEY = process.env.DISCORD_KEY;
 const prefix = "$";
 
-const client = new Discord.Client();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 client.on("ready", () => {
   // Initialize status
   let serverCount = client.guilds.cache.size;
