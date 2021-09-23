@@ -26,6 +26,7 @@ Run Locally
  
  // we can now write
  import * as Discord from "discord.js"; 
+ import { Client, Intents } from "discord.js";
  ```
  _This is works as the package.json has `{ "type": "module" }` and the scripts have the flag `--experimental-modules`_
  
