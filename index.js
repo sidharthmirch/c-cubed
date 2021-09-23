@@ -8,11 +8,15 @@ const prefix = "$";
 
 const client = new Discord.Client();
 client.on("ready", () => {
-  // log on init
-  let serverCount = client.guilds.cache.size;;
+  // Initialize status
+  let serverCount = client.guilds.cache.size;
   console.log(`${client.user.tag} online and serving ${serverCount} servers.`);
 
-  // dynamic update of server count
+  client.user.setActivity(`${serverCount} markets | ${prefix}help`, {
+    type: "WATCHING",
+  });
+
+  // dynamic update of status
   setInterval(() => {
     serverCount = client.guilds.cache.size;
     let servers = [];
