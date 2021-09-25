@@ -50,11 +50,19 @@ const priceRes = async (message) => {
     );
     const currentPrice = await getPrice(currencyA, currencyB);
     const res = new MessageEmbed()
-      .setTitle(`${currencyA.toUpperCase()} to ${currencyB.toUpperCase()}`)
-      .setColor(COLOR)
-      .setDescription(
-        `${currencyA.toUpperCase()} symbol: **${symbolA}**\n${currencyB.toUpperCase()} symbol: **${symbolB}**\n\n1 ${symbolA} is worth ${currentPrice} ${symbolB}`
-      );
+    .setColor(COLOR)
+    .addFields(
+      {
+        name: `${currencyA.toUpperCase()}`,
+        value: `${symbolA} 1`,
+        inline: true,
+      },
+      {
+        name: `${currencyB.toUpperCase()}`,
+        value: `${symbolB} ${currentPrice}`,
+        inline: true,
+      }
+    );
     message.channel.send(res);
   } catch (err) {
     console.log(err);
