@@ -10,6 +10,7 @@
     "currency-symbol-map": "^5.0.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
+    "format-currency": "^1.0.0",
     "node-fetch": "^3.0.0"
   }
 }

@@ -2,6 +2,7 @@ import { MessageEmbed } from "discord.js";
 import { getPrice } from "./getPrice.js";
 import { getSymbols } from "./getSymbols.js";
 import { client } from "../index.js";
+import formatCurrency from "format-currency";
 import dotenv from "dotenv";
 dotenv.config();
 const COLOR = process.env.COLOR || 0xffd600;
@@ -49,17 +50,19 @@ const priceRes = async (message) => {
       currencyB.toUpperCase()
     );
     const currentPrice = await getPrice(currencyA, currencyB);
-    const res = new MessageEmbed()
-    .setColor(COLOR)
-    .addFields(
+    const res = new MessageEmbed().setColor(COLOR).addFields(
       {
         name: `${currencyA.toUpperCase()}`,
-        value: `${symbolA} 1`,
+        value: `${symbolA} ${formatCurrency(1, {
+          code: currencyA,
+        })}`,
         inline: true,
       },
       {
         name: `${currencyB.toUpperCase()}`,
-        value: `${symbolB} ${currentPrice}`,
+        value: `${symbolB} ${formatCurrency(currentPrice, {
+          code: currencyB,
+        })}`,
         inline: true,
       }
     );
