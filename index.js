@@ -31,7 +31,8 @@ client.on("message", (message) => {
     try {
       const args = message.content.slice(prefix.length).trim().split(/ +/g);
       const cmd = args.shift().toLowerCase();
-      commands[cmd](message);
+      let func = commands[cmd];
+      if (func != undefined) commands[cmd](message);
     } catch (error) {
       console.error(error);
     }
