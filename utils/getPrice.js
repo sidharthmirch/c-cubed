@@ -1,8 +1,8 @@
 import { setApiKey, price } from "cryptocompare";
 import fetch from "node-fetch";
-globalThis.fetch = fetch
+globalThis.fetch = fetch;
 import dotenv from "dotenv";
-dotenv.config()
+dotenv.config();
 const API_KEY = process.env.CC_KEY;
 
 export const getPrice = async (currencyA, currencyB) => {
