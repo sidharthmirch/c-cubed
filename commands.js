@@ -3,13 +3,13 @@ import {
   commandsRes,
   priceRes,
   githubRes,
-  serverListRes,
-} from "./utils/response.js";
+  serverListRes
+} from './utils/response.js'
 
 export const commands = {
   price: priceRes,
   help: helpRes,
   commands: commandsRes,
   github: githubRes,
-  sl: serverListRes,
-};
+  sl: serverListRes
+}
