@@ -79,7 +79,7 @@ const serverListRes = async (message) => {
     const res = new MessageEmbed()
       .setTitle(`Currently in ${serverCount} servers`)
       .setColor(COLOR)
-      .setDescription(`\`\`\`${servers}\`\`\``); // TODO: Handle string formatting
+      .setDescription(`\`\`\`${servers.join(",\n")}\`\`\``);
     message.channel.send(res);
   } else {
     const res = new MessageEmbed()
