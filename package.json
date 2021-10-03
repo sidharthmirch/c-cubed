@@ -6,6 +6,7 @@
     "dev": "nodemon --experimental-modules index.js"
   },
   "dependencies": {
+    "chart.js": "^2.9.4",
     "chartjs": "^0.3.24",
     "chartjs-node-canvas": "^3.2.0",
     "cryptocompare": "^1.0.0",
