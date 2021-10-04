@@ -105,23 +105,35 @@ const serverListRes = async (message) => {
 const chartRes = async (message) => {
   const args = message.content.slice(1).trim().split(/ +/g);
   const [currencyA, currencyB] = [args[1], args[2]];
-  const { symbolA, symbolB } = getSymbols(
-    currencyA.toUpperCase(),
-    currencyB.toUpperCase()
-  );
-  const currentPrice = await getPrice(currencyA, currencyB);
-  const canvas = await getChart(currencyA, currencyB);
-  const attachment = new MessageAttachment(canvas, "chart.png");
-  const res = new MessageEmbed()
-    .setTitle( // TODO: Convert ticker to full name
-      `${currencyA.toUpperCase()}\n${symbolB}${formatCurrency(currentPrice, {
-        code: currencyB,
-      })}`
-    )
-    .setColor(COLOR)
-    .attachFiles(attachment)
-    .setImage("attachment://chart.png");
-  message.channel.send(res);
+  try {
+    const { symbolA, symbolB } = getSymbols(
+      currencyA.toUpperCase(),
+      currencyB.toUpperCase()
+    );
+    const currentPrice = await getPrice(currencyA, currencyB);
+    const canvas = await getChart(currencyA, currencyB);
+    const attachment = new MessageAttachment(canvas, "chart.png");
+    const res = new MessageEmbed()
+      .setTitle(
+        // TODO: Convert ticker to full name
+        `${currencyA.toUpperCase()}\n${symbolB}${formatCurrency(currentPrice, {
+          code: currencyB,
+        })}`
+      )
+      .setColor(COLOR)
+      .attachFiles(attachment)
+      .setImage("attachment://chart.png")
+    message.channel.send(res);
+  } catch (err) {
+    console.log(err);
+    const res = new MessageEmbed()
+      .setTitle("Oh no!")
+      .setColor(COLOR)
+      .setDescription(
+        "Please double check the arguments you passed!\nIf you believe that you have found a bug please open a new issue on GitHub.\nUse `$github` for more information."
+      );
+    message.channel.send(res);
+  }
 };
 
 export { helpRes, commandsRes, githubRes, priceRes, serverListRes, chartRes };
