@@ -2,7 +2,7 @@ import { ChartJSNodeCanvas } from "chartjs-node-canvas";
 import fetch from "node-fetch";
 globalThis.fetch = fetch;
 import { getSymbols } from "./getSymbols.js";
-import { getColor } from "./getColor.js";
+import { cryptoColor } from "crypto-color";
 import dotenv from "dotenv";
 dotenv.config();
 const API_KEY = process.env.CC_KEY;
@@ -23,8 +23,8 @@ export const getChart = async (currencyA, currencyB) => {
     };
   };
   let color = "rgba(242, 169, 0, 1)";
-  if (getColor(currencyA.toUpperCase()) != undefined)
-    color = getColor(currencyA.toUpperCase());
+  if (cryptoColor(currencyA.toUpperCase()) != undefined)
+    color = cryptoColor(currencyA.toUpperCase(), undefined, true, 1);
   const { times, prices } = await apiData();
   const chart = (async () => {
     const configuration = {

@@ -12,6 +12,7 @@ Dependencies
 - [cryptocompare](https://github.com/ExodusMovement/cryptocompare) JavaScript API to provide realtime data.
 - [chart.js](https://www.chartjs.org/) Generating charts based on realtime & historical data.
 - [chartjs-node-canvas](https://www.npmjs.com/package/chartjs-node-canvas) Rendering charts server side
+- [crypto-color](npmjs.com/package/crypto-color) Getting accurate RGBA color data for cryptocurrencies.
 - [currency-symbol-map](https://www.npmjs.com/package/currency-symbol-map) to provide currency symbols.
 - [cryptocurrencies](https://www.npmjs.com/package/cryptocurrencies) Allows for coverting tickers into readable names.
 - [format-currency](https://github.com/ExodusMovement/format-currency) to format currency data.

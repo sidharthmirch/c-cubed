@@ -27,9 +27,13 @@ const commandsRes = (message) => {
     .setTitle(`Commands`)
     .setColor(COLOR)
     .setDescription(
-      "`$price [CRYPTO] [CURRENCY]` This will provide the price of a given crypto in the provided currency.\
-      \n```Example usage: $price BTC USD --> This would give you the price of BTC in USD.``` \
-      \n`$github` Link to the github repo!."
+      `
+      - \`$price\`: Pass it two currency tickers, like BTC & USD. Returns the current price of the currency pair.
+
+      - \`$chart\`: Pass it two currency tickers, like BTC & USD. Returns a historical chart of price data from the last 365 days.
+      
+      - \`$github\`: Returns the link to the github repo for this bot if you wish to contribute or report any bugs.
+      `
     );
   message.channel.send(res);
 };
