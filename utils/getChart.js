@@ -2,6 +2,7 @@ import { ChartJSNodeCanvas } from "chartjs-node-canvas";
 import fetch from "node-fetch";
 globalThis.fetch = fetch;
 import { getSymbols } from "./getSymbols.js";
+import { getColor } from "./getColor.js";
 import dotenv from "dotenv";
 dotenv.config();
 const API_KEY = process.env.CC_KEY;
@@ -21,12 +22,9 @@ export const getChart = async (currencyA, currencyB) => {
       prices,
     };
   };
-  const randomrgba = () => {
-    const o = Math.round,
-      r = Math.random,
-      s = 255;
-    return `rgba(${o(r() * s)},${o(r() * s)},${o(r() * s)},1)`;
-  };
+  let color = "rgba(242, 169, 0, 1)";
+  if (getColor(currencyA.toUpperCase()) != undefined)
+    color = getColor(currencyA.toUpperCase());
   const { times, prices } = await apiData();
   const chart = (async () => {
     const configuration = {
@@ -37,7 +35,7 @@ export const getChart = async (currencyA, currencyB) => {
           {
             label: getSymbols(currencyA, currencyB)[0],
             data: prices,
-            borderColor: randomrgba(),
+            borderColor: color,
             borderJoinStyle: "round",
             borderCapStyle: "round",
             borderWidth: 3,
