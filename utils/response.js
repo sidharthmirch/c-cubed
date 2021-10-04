@@ -28,10 +28,12 @@ const commandsRes = (message) => {
     .setColor(COLOR)
     .setDescription(
       `
-      - \`$price\`: Pass it two currency tickers, like BTC & USD. Returns the current price of the currency pair.
+      \`$price\`: Returns the current price of a given currency pair.
+      \tExample usage: \`$price btc usd\`
 
-      - \`$chart\`: Pass it two currency tickers, like BTC & USD. Returns a historical chart of price data from the last 365 days.
-      
+      \`$chart\`: Returns a historical chart of price data from the last 365 days.
+      \tExample usage: \`$chart btc usd\` 
+
       - \`$github\`: Returns the link to the github repo for this bot if you wish to contribute or report any bugs.
       `
     );
