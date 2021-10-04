@@ -3,6 +3,8 @@ import { getChart } from "./getChart.js";
 import { getPrice } from "./getPrice.js";
 import { getSymbols } from "./getSymbols.js";
 import { client } from "../index.js";
+import { getIcon } from "./getIcon.js";
+import symbolList from "cryptocurrencies";
 import formatCurrency from "format-currency";
 import dotenv from "dotenv";
 dotenv.config();
@@ -113,16 +115,17 @@ const chartRes = async (message) => {
     const currentPrice = await getPrice(currencyA, currencyB);
     const canvas = await getChart(currencyA, currencyB);
     const attachment = new MessageAttachment(canvas, "chart.png");
+    let currencyATicker = currencyA.toUpperCase();
     const res = new MessageEmbed()
-      .setTitle(
-        // TODO: Convert ticker to full name
-        `${currencyA.toUpperCase()}\n${symbolB}${formatCurrency(currentPrice, {
-          code: currencyB,
-        })}`
-      )
       .setColor(COLOR)
       .attachFiles(attachment)
       .setImage("attachment://chart.png")
+      .setFooter(
+        `${symbolList[currencyATicker] != undefined ? symbolList[currencyATicker] : currencyATicker}: ${symbolB}${formatCurrency(currentPrice, {
+          code: currencyB,
+        })}`,
+        getIcon(currencyA)
+      );
     message.channel.send(res);
   } catch (err) {
     console.log(err);

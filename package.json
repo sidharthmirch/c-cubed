@@ -10,9 +10,11 @@
     "chartjs": "^0.3.24",
     "chartjs-node-canvas": "^3.2.0",
     "cryptocompare": "^1.0.0",
+    "cryptocurrencies": "^7.0.0",
     "currency-symbol-map": "^5.0.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
+    "fast-average-color": "^6.4.2",
     "format-currency": "^1.0.0",
     "node-fetch": "^3.0.0"
   }
