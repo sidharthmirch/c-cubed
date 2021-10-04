@@ -10,11 +10,12 @@ Dependencies
 -------
 
 - [cryptocompare](https://github.com/ExodusMovement/cryptocompare) JavaScript API to provide realtime data.
+- [chart.js](https://www.chartjs.org/) Generating charts based on realtime & historical data.
+- [chartjs-node-canvas](https://www.npmjs.com/package/chartjs-node-canvas) Rendering charts server side
 - [currency-symbol-map](https://www.npmjs.com/package/currency-symbol-map) to provide currency symbols.
+- [cryptocurrencies](https://www.npmjs.com/package/cryptocurrencies) Allows for coverting tickers into readable names.
 - [format-currency](https://github.com/ExodusMovement/format-currency) to format currency data.
 - [discord.js](https://discord.js.org/#/) JavaScript discord API.
-- [node-fetch](https://github.com/node-fetch/node-fetch) to allow for API calls to be made.
-- [NodeJS](https://nodejs.org/en/) version 16.0.0+ (to enable [ECMA script module imports](#ecma-module-import) \[changed to v16 as discord.js v13 now requires nodejs v16+]).
 
 Run Locally
 -------
