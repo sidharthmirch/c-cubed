@@ -24,7 +24,7 @@ export const getChart = async (currencyA, currencyB) => {
   };
   let color = "rgba(242, 169, 0, 1)";
   if (cryptoColor(currencyA.toUpperCase()) != undefined)
-    color = cryptoColor(currencyA.toUpperCase(), undefined, true, 1);
+    color = cryptoColor(currencyA.toUpperCase(), true, 1);
   const { times, prices } = await apiData();
   const chart = (async () => {
     const configuration = {

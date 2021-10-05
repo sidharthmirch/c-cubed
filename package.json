@@ -9,7 +9,7 @@
     "chart.js": "^2.9.4",
     "chartjs": "^0.3.24",
     "chartjs-node-canvas": "^3.2.0",
-    "crypto-color": "^0.0.8",
+    "crypto-color": "^0.0.12",
     "cryptocompare": "^1.0.0",
     "cryptocurrencies": "^7.0.0",
     "currency-symbol-map": "^5.0.1",
