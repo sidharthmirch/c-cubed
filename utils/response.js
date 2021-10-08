@@ -127,7 +127,7 @@ const chartRes = async (message) => {
       .attachFiles(attachment)
       .setImage("attachment://chart.png")
       .setFooter(
-        `${symbolList[currencyATicker] != undefined ? symbolList[currencyATicker] : currencyATicker}: ${symbolB}${formatCurrency(currentPrice, {
+        `${symbolList[currencyATicker] != undefined ? symbolList[currencyATicker] : currencyATicker}: ${symbolB} ${formatCurrency(currentPrice, {
           code: currencyB,
         })}`,
         getIcon(currencyA)
